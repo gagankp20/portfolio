@@ -24,15 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('portfolio-theme', theme);
   }
 
-  // Initialize theme
+  // Initialize theme (default: light, respects saved preference)
   const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme) {
-    applyTheme(savedTheme);
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    applyTheme('dark');
-  } else {
-    applyTheme('light');
-  }
+  applyTheme(savedTheme || 'light');
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
